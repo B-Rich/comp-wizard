@@ -3,7 +3,7 @@ import json, urllib, urllib2, time, sqlite3, os
 
 def getDatabase():
 	database = {}
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	
 	cursor.execute('select * from CD_Burners')

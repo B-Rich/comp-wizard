@@ -15,7 +15,7 @@ from operator import itemgetter
 # FIXED format (Title*, Price, ItemNumber, NewEgg ItemNumber*, ...)
 def get_Database():
 	database = {}
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	
 	cursor.execute('select * from CD_Burners')
@@ -364,12 +364,11 @@ def main():
   components = search_price(price, component_database, type)
 
   # print title and NewEgg Item Number
-  ordering = ['Motherboards', 'Processors', 'Video_Cards', 'Internal_HDD', 'Memory', 'Power_Supplies', 'Computer_Cases']
+  ordering = ['Motherboards', 'Processors', 'Video Cards', 'Internal Hard Drive', 'Memory', 'Power Supply', 'Cases']
   for i in xrange(0, len(components)):
     print ordering[i]
     print components[i][0]
     print components[i][1]
-    print components[i][3]
 
 if __name__ == '__main__':
     main()

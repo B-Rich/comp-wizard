@@ -65,7 +65,7 @@ def idf():
 		# Calculate and return the idf score
   for term in IDF:
     IDF[term] = math.log(float(numDocs)/float(IDF[term]))
-  pickle.dump(dict(IDF),open('idf.pickle','wb'))  # Pickling saves SOOO much time
+  pickle.dump(dict(IDF),open('../data/idf.pickle','wb'))  # Pickling saves SOOO much time
   return IDF
 
 

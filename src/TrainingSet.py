@@ -8,7 +8,7 @@ import pickle, GetReviews, data, Tokenizer, classify, math
 def BuildTrainingSet():
 	# initialize variables
   database = data.getDatabase()
-  IDF = dict(pickle.load(open('idf.pickle','rb')))
+  IDF = dict(pickle.load(open('../data/idf.pickle','rb')))
   numReviews = 0
   posReview = {}
   numPos = 0
@@ -60,13 +60,13 @@ def BuildTrainingSet():
 
 # Use python pickle function to save the training sets
 def saveSet(posSet,negSet):
-  pickle.dump(dict(posSet),open('PicklePos','wb'))
-  pickle.dump(dict(negSet),open('PickleNeg','wb'))
+  pickle.dump(dict(posSet),open('../data/PicklePos','wb'))
+  pickle.dump(dict(negSet),open('../data/PickleNeg','wb'))
 
 # Use python pickle function to load the training sets
 def loadSet():
-  posSet = dict(pickle.load(open('PicklePos','rb')))
-  negSet = dict(pickle.load(open('PickleNeg','rb')))
+  posSet = dict(pickle.load(open('../data/PicklePos','rb')))
+  negSet = dict(pickle.load(open('../data/PickleNeg','rb')))
   return (posSet,negSet)
 
 def main():

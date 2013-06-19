@@ -64,7 +64,7 @@ class DBManager:
 # updateCDBurners(self)
 # Clears the CD_Burners table in the database and replaces it with new data
   def updateCDBurners(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	  # list of features we want to keep track of
 	CD_Burners = ['DVD-ROM', 'CD-ROM', 'Brand', 'Interface', 'Type']
@@ -98,7 +98,7 @@ class DBManager:
 # updateComputer_Cases(self)
 # Clears the Computer_Cases table in the database and replaces it with new data
   def updateComputer_Cases(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	  # list of features we want to keep track of
 	Computer_Cases =  ['Brand', '80mm Fans', '120mm Fans', 'With Power Supply', \
@@ -138,7 +138,7 @@ class DBManager:
 # updateCase_Fans(self)
 # Clears the Case_Fans table in the database and replaces it with new data
   def updateCase_Fans(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	  # list of features we want to keep track of
 	Case_Fans =  ['Fan Size', 'Brand', 'Power Connector', 'Type']
@@ -174,7 +174,7 @@ class DBManager:
 # updateProcessors(self)
 # Clears the Processors table in the database and replaces it with new data
   def updateProcessors(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	  # list of features we want to keep track of
 	Processors =  ['Name', 'Brand', 'Multi-Core', 'CPU Socket Type', 'Operating Frequency', \
@@ -213,7 +213,7 @@ class DBManager:
 # updateCPU_Fans(self)
 # Clears the CPU_Fans table in the database and replaces it with new data
   def updateCPU_Fans(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	  # list of features we want to keep track of
 	CPU_Fans =  ['Fan Size', 'Compatibility', 'Brand']
@@ -250,7 +250,7 @@ class DBManager:
 # updateInternal_HDD(self)
 # Clears the Internal_HDD table in the database and replaces it with new data
   def updateInternal_HDD(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	  # list of features we want to keep track of
 	Internal_HDD =  ['Capacity', 'Brand', 'Cache', 'Interface', 'RPM', 'Form Factor']
@@ -287,7 +287,7 @@ class DBManager:
 # updateMemory(self)
 # Clears the Memory table in the database and replaces it with new data
   def updateMemory(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	  # list of features we want to keep track of
 	Memory =  ['Capacity', 'Brand', 'Speed', 'Type']
@@ -325,7 +325,7 @@ class DBManager:
 # updateIntel_Motherboards(self)
 # Clears the Intel_Motherboards table in the database and replaces it with new data
   def updateIntel_Motherboards(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	  # list of features we want to keep track of
 	Intel_Motherboards =  ['Brand', 'CPU Type', 'Form Factor', 'CPU Socket Type', 'PCI Express x1', 'SATA 6Gb/s', 'PCI Slots', 'PCI Express 2.0 x16', \
@@ -364,7 +364,7 @@ class DBManager:
 # updateAMD_Motherboards(self)
 # Clears the AMD_Motherboards table in the database and replaces it with new data
   def updateAMD_Motherboards(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	  # list of features we want to keep track of
 	AMD_Motherboards =  ['Brand', 'CPU Type', 'Form Factor', 'CPU Socket Type', 'PCI Express x1', 'SATA 6Gb/s', 'PCI Slots', 'PCI Express 2.0 x16', \
@@ -396,7 +396,7 @@ class DBManager:
 
 # Wrapper function to update motherboards
   def updateMotherboards(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	try: cursor.execute('drop table Motherboards')
 	except: pass
@@ -411,7 +411,7 @@ class DBManager:
 # updatePower_Supplies(self)
 # Clears the Power_Supplies table in the database and replaces it with new data
   def updatePower_Supplies(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	  # list of features we want to keep track of
 	Power_Supplies =  ['Maximum Power', 'Type', 'PCI-Express Connector', 'Brand', 'SATA Power Connector', 'Main Connector', 'Connectors', 'Modular']
@@ -455,7 +455,7 @@ class DBManager:
 # updateVideo_Cards(self)
 # Clears the Video_Cards table in the database and replaces it with new data
   def updateVideo_Cards(self):
-	conn = sqlite3.connect('./NewEggDatabase')
+	conn = sqlite3.connect('../data/NewEggDatabase')
 	cursor = conn.cursor()
 	  # list of features we want to keep track of
 	Video_Cards =  ['DVI', 'Memory Size', 'Brand', 'Max Resolution', 'Chipset Manufacturer', 'Interface', 'GPU', 'Power Connector', 'Core Clock']

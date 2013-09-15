@@ -5,7 +5,6 @@
 #  calculates Cosine Similarity of tf-idf vectors
 #  comparing Product Reviews to the Training Set
 
-
 import math, pickle, GetReviews, data, Tokenizer, TrainingSet
 
 # CosineSim(q,d)
@@ -14,7 +13,7 @@ import math, pickle, GetReviews, data, Tokenizer, TrainingSet
 #	and Value is the tf-idf score 
 # Outputs: The cosine similarity ranging from -1 to 1
 def CosineSim(q,d):
-	# Need floats
+  # Need floats
   dot = 0.0
   magQ = 0.0
   magD = 0.0
@@ -22,12 +21,12 @@ def CosineSim(q,d):
   dK = d.keys()
   keys = list(set(qK) & set(dK)) # find intersection of keys
   for k in keys:	# dot product only matters if both have a common term
-	dot = dot + q[k]*d[k]
+    dot = dot + q[k]*d[k]
   for a in q:		# Sum all terms squared
-	magQ = magQ + q[a]*q[a]
+    magQ = magQ + q[a]*q[a]
   for b in d:		# Sum all terms squared
-	magD = magD + d[b]*d[b]
-		# Formula for Cosine Similarity
+    magD = magD + d[b]*d[b]
+  # Formula for Cosine Similarity
   cos = float(dot)/float(math.sqrt(magQ)*math.sqrt(magD))
   return cos
 
@@ -38,31 +37,31 @@ def CosineSim(q,d):
 def idf():
   IDF = {}
   numDocs = 0
-	# Get all the products from the database
+  # Get all the products from the database
   dat = data.getDatabase()
   for table in dat:
     #print '.'
-	# Go through each product in each table
+    # Go through each product in each table
     for product in dat[table]:
-	item = product[3]
-		# Get their reviews
-	revs = GetReviews.readReview(item)["Reviews"]
-	try:
-	  for r in revs:
-	    #print r
-		# Tokenize and Stem reviews
-	    con = Tokenizer.stemming(Tokenizer.tokenize(r['Cons']))
-	    pro = Tokenizer.stemming(Tokenizer.tokenize(r['Pros']))
-	    comment = Tokenizer.stemming(Tokenizer.tokenize(r['Comments']))
-	    #print 'Before:',r['Cons'],'\n\nAfter:',con
-		# Count unique tokens in the document
-	    for token in list(set(con) | set(pro) | set(comment)):
-		if token in IDF: IDF[token] = IDF[token] + 1
-		else: IDF[token] = 1
-	  numDocs = numDocs + 1
-		# Increment the number of documents
-	except: pass
-		# Calculate and return the idf score
+      item = product[3]
+      # Get their reviews
+      revs = GetReviews.readReview(item)["Reviews"]
+      try:
+        for r in revs:
+          #print r
+          # Tokenize and Stem reviews
+          con = Tokenizer.stemming(Tokenizer.tokenize(r['Cons']))
+          pro = Tokenizer.stemming(Tokenizer.tokenize(r['Pros']))
+          comment = Tokenizer.stemming(Tokenizer.tokenize(r['Comments']))
+          #print 'Before:',r['Cons'],'\n\nAfter:',con
+          # Count unique tokens in the document
+          for token in list(set(con) | set(pro) | set(comment)):
+            if token in IDF: IDF[token] = IDF[token] + 1
+            else: IDF[token] = 1
+            numDocs = numDocs + 1
+            # Increment the number of documents
+      except: pass
+  # Calculate and return the idf score
   for term in IDF:
     IDF[term] = math.log(float(numDocs)/float(IDF[term]))
   pickle.dump(dict(IDF),open('../data/idf.pickle','wb'))  # Pickling saves SOOO much time
@@ -77,9 +76,9 @@ def idf():
 # Yes... a dictionary of lists of dictionaries. What are you gonna do?
 def tf_idf():
   TF_IDF = {}
-	# Load the inverse document frequencies
-  IDF = idf()
-  #IDF = dict(pickle.load(open('idf.pickle','rb')))
+  # Load the inverse document frequencies
+  #IDF = idf()
+  IDF = dict(pickle.load(open('../data/idf.pickle','rb')))
   dat = data.getDatabase()	# get all of the products
   for table in dat:
     print '.'	# progress marker
@@ -100,7 +99,6 @@ def tf_idf():
 		else: tf[token] = 1
 	    for t in tf:
 	    	tf[t] = float(1+math.log(tf[t]))*IDF[t] # calculate tf-idf score
-
 	    product_review.append(tf)	# add to list of reviews
 	except: pass
 	TF_IDF[item] = product_review	# add list of reviews to the dictionary
@@ -119,6 +117,7 @@ class Classifier:
 	self.numP = 0
 	self.numN = 0
 	print '..Loaded.. '
+
 # KNN(self, review)
 # Given a review it finds the K nearest neighbors in the training set
 # if closer to the positive reviews, return 1

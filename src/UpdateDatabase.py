@@ -13,23 +13,22 @@ import re, json, urllib, urllib2, time, sqlite3, os, GetReviews, classify
 class DBManager:
 
   def __init__(self):
-	self.classifier = classify.Classifier()
+    self.classifier = classify.Classifier()
 
 # read_specs(self, item_num)
 # Takes in Newegg Item Number and looks up Tech Specs for that product
-
   def read_specs(self, item_num):
-  	specs = {}
-	  # GET the item based on item number
-  	url = 'http://www.ows.newegg.com/Products.egg/'+str(item_num)+'/Specification'
-  	request = urllib2.urlopen(url)
-  	response = request.read()
-  	data = json.loads(response)
-    	  # data now has all sorts of info about the item
-  	for spec in data['SpecificationGroupList']:	# There are 3 spec group lists we need to get specs from
-    	  for pair in spec['SpecificationPairList']:	# Inside the spec group list they are organized as key value pairs
-      	    specs[pair['Key']] = pair['Value']
-  	return specs
+    specs = {}
+    # GET the item based on item number
+    url = 'http://www.ows.newegg.com/Products.egg/'+str(item_num)+'/Specification'
+    request = urllib2.urlopen(url)
+    response = request.read()
+    data = json.loads(response)
+    # data now has all sorts of info about the item
+    for spec in data['SpecificationGroupList']:	# There are 3 spec group lists we need to get specs from
+      for pair in spec['SpecificationPairList']:	# Inside the spec group list they are organized as key value pairs
+        specs[pair['Key']] = pair['Value']
+        return specs
 
 
 # get_items(self, StoreID, CategoryID, SubCategoryID, NodeID, pageNum):
